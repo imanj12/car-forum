@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <% @categories.each do |cat| %>
+          <li><%= link_to cat.title, category_path(cat) %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

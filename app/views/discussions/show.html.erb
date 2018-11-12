@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <%= @discussion.title %>
+    <ul>
+      <% @discussion.posts.each do |pst| %>
+
+        <li><%= pst.content %></li>
+        <li><%= pst.user.username %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Create New Post', new_post_path %>
+
+  </body>
+</html>
