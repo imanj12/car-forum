@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-      <%= @discussion.title %>
+      <%= link_to @discussion.category.title, category_path(@discussion.category) %> > <%= @discussion.title %>
     <ul>
       <% @discussion.posts.each do |pst| %>
 

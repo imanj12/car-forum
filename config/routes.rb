@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'categories#index'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
   resources :categories
   resources :discussions
   resources :posts
