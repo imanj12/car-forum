@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Create New Discussion</h1>
+    <%= form_for @discussion do |f| %>
+      <%= f.collection_select :category_id, Category.all, :id, :title %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= f.submit %>
+    <% end %>
+  </body>
+</html>

@@ -11,5 +11,10 @@
         <li><%= link_to dis.title, discussion_path(dis) %></li>
         <% end %>
     </ul>
+
+    <%= link_to 'Create new discussion', new_discussion_path %><br>
+
+    <%= link_to 'See all Categories', categories_path %>
+
   </body>
 </html>

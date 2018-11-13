@@ -10,11 +10,15 @@
       <% @discussion.posts.each do |pst| %>
 
         <li><%= pst.content %></li>
-        <li><%= pst.user.username %></li>
+        <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
       <% end %>
     </ul>
 
-    <%= link_to 'Create New Post', new_post_path %>
+    <%= link_to 'Create New Post', new_post_path %><br>
+
+    <%= link_to 'See all Discussions in this Category', category_path(@discussion.category) %><br>
+
+    <%= link_to 'See all Categories', categories_path %><br>
 
   </body>
 </html>
