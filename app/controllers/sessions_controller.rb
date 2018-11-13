@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    cookies.clear
+    redirect_to login_path
+  end
+
 end

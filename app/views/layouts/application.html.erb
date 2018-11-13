@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <% if cookies[:user_id] %>
+      <h3>Welcome <%= User.find(cookies[:user_id]).username %></h3>
+      <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
+    <% else %>
+      <p><%= link_to 'Login', login_path %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
