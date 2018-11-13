@@ -14,7 +14,9 @@
       <% end %>
     </ul>
 
-    <%= link_to 'Create New Post', new_post_path %><br>
+    <% if cookies[:user_id] %>
+      <%= render partial: "layouts/new_post", locals: { post: Post.new, disc_id: @discussion.id, user_id: cookies[:user_id] } %>
+    <% end %>
 
     <%= link_to 'See all Discussions in this Category', category_path(@discussion.category) %><br>
 

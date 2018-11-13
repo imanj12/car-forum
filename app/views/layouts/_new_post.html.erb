@@ -1,0 +1,8 @@
+<h3>New Post</h3>
+<%= form_for post do |f| %>
+  <%= f.hidden_field :user_id, value: user_id %>
+  <%= f.hidden_field :discussion_id, value: disc_id %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>

@@ -12,7 +12,9 @@
         <% end %>
     </ul>
 
-    <%= link_to 'Create new discussion', new_discussion_path %><br>
+    <% if cookies[:user_id] %>
+      <%= render partial: "layouts/new_discussion", locals: { discussion: Discussion.new, cat_id: @category.id } %>
+    <% end %>
 
     <%= link_to 'See all Categories', categories_path %>
 

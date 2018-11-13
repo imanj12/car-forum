@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   def get_current_user
     if @current_user
-      @current_user.username
+      @current_user
     else
-      @current_user = User.find_by(id: session[:user_id])
+      @current_user = User.find_by(id: cookies[:user_id])
       if @current_user
         @current_user = @current_user.username
       end
