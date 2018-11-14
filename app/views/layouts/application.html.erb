@@ -17,7 +17,7 @@
       </div>
       <div id='main'>
         <% if cookies[:user_id] %>
-          <h3>Welcome <%= User.find(cookies[:user_id]).username %></h3>
+          <h3>Welcome <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %></h3>
           <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
         <% else %>
           <p><%= link_to 'Login', login_path %></p>

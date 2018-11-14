@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:username])
-    if @user
+    if @user && @user.authenticate(params[:password])
       cookies[:user_id] = @user.id
       redirect_to categories_path
     else
-      flash.notice = 'That user does not exist'
-      render :new
+      flash.notice = 'No user found with that name/password combination'
+      redirect_to login_path
     end
   end
 

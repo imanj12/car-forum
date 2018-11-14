@@ -6,20 +6,7 @@
   </head>
   <body>
     <h1>Create New User</h1>
-    <% if @user.errors.any? %>
-      <p>Username already taken</p>
-    <% end %>
-    <%= form_for @user do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %><br>
-      <%= f.label :username %>
-      <%= f.text_field :username %><br>
-      <%= f.label :birthdate %>
-      <%= f.text_field :birthdate %><br>
-      <%= f.label :bio %>
-      <%= f.text_area :bio %><br>
-      <%= f.submit %>
-    <% end %>
+    <%= render 'layouts/new_edit_user' %>
 
   </body>
 </html>
