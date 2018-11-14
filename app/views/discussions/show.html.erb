@@ -10,6 +10,7 @@
       <% @discussion.posts.each do |pst| %>
 
         <li><%= pst.content %></li>
+         <li>Read Time: <%= pst.read_time %></li>
         <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
       <% end %>
     </ul>
