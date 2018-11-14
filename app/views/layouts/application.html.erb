@@ -4,19 +4,28 @@
     <title>CarForum</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if cookies[:user_id] %>
-      <h3>Welcome <%= User.find(cookies[:user_id]).username %></h3>
-      <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
-    <% else %>
-      <p><%= link_to 'Login', login_path %></p>
-    <% end %>
+    <div id='layout'>
+      <div id='menu'>
+        <div class='pure-menu'>
+          <a class='pure-menu-heading' href='/'>CarForum</a>
+        </div>
+      </div>
+      <div id='main'>
+        <% if cookies[:user_id] %>
+          <h3>Welcome <%= User.find(cookies[:user_id]).username %></h3>
+          <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
+        <% else %>
+          <p><%= link_to 'Login', login_path %></p>
+        <% end %>
+        <%= yield %>
+      </div>
 
-    <%= yield %>
+
+    </div>
   </body>
 </html>
