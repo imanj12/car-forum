@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-      <%= link_to @discussion.category.title, category_path(@discussion.category) %> > <%= @discussion.title %>
-    <ul>
-      <% @discussion.posts.each do |pst| %>
+<p><%= link_to @discussion.category.title, category_path(@discussion.category) %> > <%= @discussion.title %></p>
 
-        <li><%= pst.content %></li>
-        <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
-      <% end %>
-    </ul>
+<p>Total number of posts in thread: <%= @discussion.posts.count %></p>
+<p><%= pluralize(@discussion.users.uniq.count, 'person') %> have posted in this thread</p>
+<p>Average seconds between posts: <%= @discussion.avg_tm_btwn_posts %></p>
+<p>Average length of posts: <%= @discussion.avg_post_length %> characters</p>
 
-    <% if cookies[:user_id] %>
-      <%= render partial: "layouts/new_post", locals: { post: Post.new, disc_id: @discussion.id, user_id: cookies[:user_id] } %>
-    <% end %>
+<ul>
+  <% @discussion.posts.each do |pst| %>
 
-    <%= link_to 'See all Discussions in this Category', category_path(@discussion.category) %><br>
+    <li><%= pst.content %></li>
+    <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
+  <% end %>
+</ul>
 
-    <%= link_to 'See all Categories', categories_path %><br>
+<% if cookies[:user_id] %>
+  <%= render partial: "layouts/new_post", locals: { post: Post.new, disc_id: @discussion.id, user_id: cookies[:user_id] } %>
+<% end %>
 
-  </body>
-</html>
+<%= link_to 'See all Discussions in this Category', category_path(@discussion.category) %><br>
+
+<%= link_to 'See all Categories', categories_path %><br>
+
+<p>Number of page views: <%= @discussion.hits %></p>
