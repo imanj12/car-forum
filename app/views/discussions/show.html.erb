@@ -9,7 +9,8 @@
   <% @discussion.posts.each do |pst| %>
 
     <li><%= pst.content %></li>
-    <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
+    <li><%= link_to pst.user.username, user_path(pst.user) %></li>
+    <li><%= pst.content.reading_time %></li><br>
 
     <% if cookies[:user_id].to_i == pst.user_id %>
       <li><%= link_to "Delete Post", pst, method: :delete %></li>

@@ -10,6 +10,9 @@
     <h3>Username: <%= @user.username %></h3>
     <h3>Bio:</h3>
     <p><%= @user.bio %></p>
+    <% if @user.profile_image_url %>
+      <%= image_tag(@user.profile_image_url) %>
+    <% end %>
 
     <h3>Total number of posts: <%= @user.posts.length %></h3>
 
