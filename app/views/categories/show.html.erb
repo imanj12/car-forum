@@ -6,15 +6,16 @@
         <div class="content">
           <a><%= link_to dis.title, discussion_path(dis), class: 'header' %></a>
           <div class="description">
-            Test
+            <b>Posts:</b> <%= dis.total_posts %> | <b>Users in this thread:</b> <%= dis.total_users %> | <b>Last Post:</b> <%= dis.last_post %>
           </div>
+        </div>
       </div>
     <% end %>
   </div>
 
-  <% if cookies[:user_id] %>
-    <%= render partial: "layouts/new_discussion", locals: { discussion: Discussion.new, cat_id: @category.id } %>
-  <% end %>
 
-  <%= link_to 'See all Categories', categories_path %>
+<% if cookies[:user_id] %>
+  <%= render partial: "layouts/new_discussion", locals: { discussion: Discussion.new, cat_id: @category.id } %>
+<% end %>
+
 </div>

@@ -4,6 +4,15 @@ class Discussion < ApplicationRecord
   has_many :users, through: :posts
   acts_as_punchable
 
+  # last post
+  def last_post
+    if self.posts.length > 0
+      self.posts.last.updated_at.localtime.strftime('%H:%M:%S - %m/%d/%Y')
+    else
+      "Thread is empty!"
+    end
+  end
+
   # count total number of posts in discussion/thread
   def total_posts
     self.posts.count

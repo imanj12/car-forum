@@ -1,7 +1,7 @@
-<h3>Create New Thread</h3>
-<%= form_for discussion do |f| %>
-  <%= f.hidden_field :category_id, value: cat_id %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.submit %>
-<% end %>
+<div class="ui input focus">
+  <%= form_for discussion, :html => {class: 'ui input focus'} do |f| %>
+    <%= f.hidden_field :category_id, value: cat_id %>
+    <%= f.text_field :title, placeholder: 'Thread Title' %>
+    <%= f.submit 'Create Thread' %>
+  <% end %>
+</div>
