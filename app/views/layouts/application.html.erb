@@ -6,24 +6,21 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="ui menu">
+      <a class="active item"></a>
+      <a class="item">Reviews</a>
+      <a class="item">Upcoming Events</a>
+    </div>
   </head>
 
   <body>
-    <div id='layout'>
-      <div id='menu'>
-        <div class='pure-menu'>
-          <a class='pure-menu-heading' href='/'>CarForum</a>
-        </div>
-      </div>
-      <div id='main'>
-        <% if cookies[:user_id] %>
-          <h3>Welcome <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %></h3>
-          <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
-        <% else %>
-          <p><%= link_to 'Login', login_path %></p>
-        <% end %>
-        <%= yield %>
-      </div>
-    </div>
+    <% if cookies[:user_id] %>
+      <h3>Welcome <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %></h3>
+      <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
+    <% else %>
+      <p><%= link_to 'Login', login_path %></p>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>
