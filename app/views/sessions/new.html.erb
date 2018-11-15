@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <p><%= flash.notice %></p>
-    <h1>Login</h1>
-    <%= form_tag '/login' do %>
-      <%= label :username, 'Enter username' %>
-      <%= text_field_tag :username %>
-      <%= label :password, 'Enter password' %>
-      <%= password_field_tag :password %>
-      <%= submit_tag "Login" %>
-    <% end %>
-    <p><%= link_to 'Create new user', new_user_path %></p>
-
-  </body>
-</html>
+<p><%= flash.notice %></p>
+<h1>Login</h1>
+  <%= form_tag '/login', class: 'ui form' do %>
+    <%= label :username, 'Username' %>
+    <%= text_field_tag :username, '', class: 'login-input' %>
+    <%= label :password, 'Password' %>
+    <%= password_field_tag :password, '', class: 'login-input' %>
+    <%= submit_tag "Login", class: 'ui button' %>
+  <% end %>
+<br>
+<p><%= link_to 'Create new user', new_user_path %></p>

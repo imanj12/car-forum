@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-
-  <body>
-    <h1>All Categories</h1>
-    <ul>
-      <% @categories.each do |cat| %>
-          <li><%= link_to cat.title, category_path(cat) %></li>
-      <% end %>
-    </ul>
-  </body>
-</html>
+<div class='ui container'>
+  <h1>All Discussion Topics</h1>
+  <div class="ui relaxed divided list">
+    <% @categories.each do |cat| %>
+      <div class="item">
+        <div class="content">
+          <a><%= link_to cat.title, category_path(cat), class: 'header' %></a>
+          <div class="description">
+            <b>Threads:</b> <%= cat.total_threads %> | <b>Posts:</b> <%= cat.total_posts %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

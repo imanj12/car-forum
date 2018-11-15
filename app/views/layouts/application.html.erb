@@ -6,21 +6,20 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <div class="ui menu">
-      <a class="active item"></a>
-      <a class="item">Reviews</a>
-      <a class="item">Upcoming Events</a>
+    <div class="ui borderless main menu">
+      <a><%= link_to 'CarForum', categories_path, class: 'item' %></a>
+      <div class="item right">
+        <% if cookies[:user_id] %>
+          <div id='logged-in-text'>You are logged in as <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id], class: 'ui button') %></div>
+          <div><%= link_to 'Logout', logout_path, class: 'ui button', method: 'delete' %></div>
+        <% else %>
+          <div><%= link_to 'Login', login_path, class: 'ui button' %></div>
+        <% end %>
+      </div>
     </div>
   </head>
 
   <body>
-    <% if cookies[:user_id] %>
-      <h3>Welcome <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %></h3>
-      <p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
-    <% else %>
-      <p><%= link_to 'Login', login_path %></p>
-    <% end %>
-
     <%= yield %>
   </body>
 </html>
