@@ -10,6 +10,10 @@
 
     <li><%= pst.content %></li>
     <li><%= link_to pst.user.username, user_path(pst.user) %></li><br>
+
+    <% if cookies[:user_id].to_i == pst.user_id %>
+      <li><%= link_to "Delete Post", pst, method: :delete %></li>
+    <% end %>
   <% end %>
 </ul>
 

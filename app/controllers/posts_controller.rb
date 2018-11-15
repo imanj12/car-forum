@@ -9,6 +9,11 @@ class PostsController < ApplicationController
     redirect_to discussion_path(@post.discussion)
   end
 
+  def destroy
+    @post = Post.find(params[:id]).destroy
+    redirect_to discussion_path(@post.discussion)
+  end
+
   private
 
   def post_params
