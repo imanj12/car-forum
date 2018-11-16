@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <div class="ui borderless main menu">
-      <a><%= link_to 'CarForum', categories_path, class: 'item' %></a>
+      <a><%= link_to 'Autalk', categories_path, class: 'item' %></a>
       <div class="item right">
         <% if cookies[:user_id] %>
           <div id='logged-in-text'>You are logged in as <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %> <img class="ui avatar image" src=<%= User.find(cookies[:user_id]).profile_image_url %>></div>
