@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
       @current_user
     else
       @current_user = User.find_by(id: cookies[:user_id])
-      if @current_user
-        @current_user = @current_user.username
-      end
+      # if @current_user
+      #   @current_user = @current_user.username
+      # end
     end
   end
 

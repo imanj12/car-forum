@@ -10,7 +10,7 @@
       <a><%= link_to 'CarForum', categories_path, class: 'item' %></a>
       <div class="item right">
         <% if cookies[:user_id] %>
-          <div id='logged-in-text'>You are logged in as <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %></div>
+          <div id='logged-in-text'>You are logged in as <%= link_to User.find(cookies[:user_id]).username, user_path(cookies[:user_id]) %> <img class="ui avatar image" src=<%= User.find(cookies[:user_id]).profile_image_url %>></div>
           <div><%= link_to 'Logout', logout_path, class: 'ui button', method: 'delete' %></div>
         <% else %>
           <div><%= link_to 'Login', login_path, class: 'ui button' %></div>

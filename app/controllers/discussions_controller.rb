@@ -5,8 +5,12 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion = Discussion.find(params[:id])
-    @discussion.punch(request)
+    if Discussion.where(id: params[:id]).exists?
+      @discussion = Discussion.find(params[:id])
+      @discussion.punch(request)
+    else
+      redirect_to categories_path
+    end
   end
 
   def create

@@ -5,6 +5,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    if Category.where(id: params[:id]).exists?
+      @category = Category.find(params[:id])
+    else
+      redirect_to categories_path
+    end
   end
 end
