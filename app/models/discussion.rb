@@ -59,7 +59,7 @@ class Discussion < ApplicationRecord
       end
 
       avg_length = post_lengths.inject(:+) / post_lengths.length
-      avg_length.to_i
+      avg_length.to_i.to_s + ' characters'
     else
       'No posts!'
     end

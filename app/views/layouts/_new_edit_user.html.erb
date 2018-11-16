@@ -1,19 +1,21 @@
 <%= render partial: 'layouts/errors', locals: { new_object: @user } %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
-  <%= f.label :profile_image_url %>
-  <%= f.text_field :profile_image_url %>
-  <%= f.label :birthdate %>
-  <%= f.text_field :birthdate %><br>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
-<% end %>
+<div class='ui form segment'>
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
+    <%= f.label :profile_image_url %>
+    <%= f.text_field :profile_image_url %>
+    <%= f.label :birthdate %>
+    <%= f.text_field :birthdate %><br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit class: 'ui button' %>
+  <% end %>
+</div>

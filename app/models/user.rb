@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :discussions, through: :posts
   validates :username, uniqueness: true
+  validates :username, presence: true
   has_secure_password
 
   def recent_five_posts

@@ -14,6 +14,14 @@
  *= require_self
  */
 
+#body-image {
+  background-image: url("http://blog.iso50.com/wp-content/uploads/2012/06/lancia-delta-hf-integrale-evolutione-02.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 #logged-in-text {
   padding-right: 20px;
 }
@@ -24,4 +32,16 @@
 
 #password.login-input {
   width: 200px;
+}
+
+.post_author {
+  text-align: right;
+}
+
+#thread-right-rail {
+  position: fixed;
+}
+
+.pad-down {
+  padding-top: 20px;
 }

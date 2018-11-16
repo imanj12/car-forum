@@ -1,11 +1,22 @@
-<p><%= flash.notice %></p>
-<h1>Login</h1>
-  <%= form_tag '/login', class: 'ui form' do %>
-    <%= label :username, 'Username' %>
-    <%= text_field_tag :username, '', class: 'login-input' %>
-    <%= label :password, 'Password' %>
-    <%= password_field_tag :password, '', class: 'login-input' %>
-    <%= submit_tag "Login", class: 'ui button' %>
+<div class='ui container'>
+  <% if flash.notice %>
+    <div class="ui error form segment">
+      <div class="ui error message">
+        <div class="header">Error Message(s)</div>
+        <p><%= flash.notice %></p>
+      </div>
+    </div>
   <% end %>
-<br>
-<p><%= link_to 'Create new user', new_user_path %></p>
+  <div class='ui segment'>
+    <h1>Login</h1>
+      <%= form_tag '/login', class: 'ui form' do %>
+        <%= label :username, 'Username' %>
+        <%= text_field_tag :username, '', class: 'login-input' %>
+        <%= label :password, 'Password' %>
+        <%= password_field_tag :password, '', class: 'login-input' %>
+        <%= submit_tag "Login", class: 'ui button' %>
+      <% end %>
+    <br>
+    <p><%= link_to 'Create new user', new_user_path, class: 'ui button' %></p>
+  </div>
+  </div>

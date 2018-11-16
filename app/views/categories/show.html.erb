@@ -1,5 +1,8 @@
 <div class='ui container'>
-  <h1><%= link_to 'All', categories_path %> > <%= @category.title %></h1>
+  <div class='ui segment'>
+    <h1><%= link_to 'All', categories_path %> > <%= @category.title %></h1>
+  </div>
+  <div class='ui segment'>
   <div class="ui relaxed divided list">
     <% @category.discussions.each do |dis| %>
       <div class="item">
@@ -18,4 +21,5 @@
   <%= render partial: "layouts/new_discussion", locals: { discussion: Discussion.new, cat_id: @category.id } %>
 <% end %>
 
+</div>
 </div>

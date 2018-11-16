@@ -1,32 +1,42 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>User Details</h1>
-    <h3>Name: <%= @user.name %></h3>
-    <h3>Username: <%= @user.username %></h3>
-    <h3>Bio:</h3>
-    <p><%= @user.bio %></p>
-    <% if @user.profile_image_url %>
-      <%= image_tag(@user.profile_image_url) %>
+<div class='ui container'>
+  <div class='ui segment'>
+    <h1><%= @user.username %></h1>
+  </div>
+  <div class='ui segment'>
+    <div class='ui ribbon label'>Details</div>
+    <% if cookies[:user_id].to_i == @user.id %>
+      <%= link_to "Edit User", edit_user_path(@user) %> <br>
     <% end %>
 
-    <h3>Total number of posts: <%= @user.posts.length %></h3>
+    <img class="ui small circular image pad-down" src="<% if @user.profile_image_url %>
+      <%= @user.profile_image_url %>
+    <% end %>">
+
+    <% if @user.name %>
+      <h4 class='pad-down'>Real Name:</h4> <%= @user.name %>
+    <% end %>
+
+    <% if @user.birthdate %>
+      <h4>Birth Day:</h4> <%= @user.birthdate %>
+    <% end %>
+
+    <% if @user.bio %>
+      <h4>Bio:</h4>
+      <p><%= @user.bio %></p>
+    <% end %>
+  </div>
+
+  <div class='ui segment'>
+    <h3>Total posts: <%= @user.posts.length %></h3>
 
     <h3>Recent Posts</h3>
     <ul>
       <% @recents.each do |pst| %>
         <li>
           <%= link_to pst.discussion.category.title, category_path(pst.discussion.category) %> > <%= link_to pst.discussion.title, discussion_path(pst.discussion) %><br>
-          <%= pst.updated_at.strftime('%m/%d/%Y %I:%M') %> - <%= pst.content[0..50] + '...' %>
+          <%= pst.updated_at.strftime('%m/%d/%Y at %I:%M') %> - <%= pst.content[0..50] + '...' %>
         </li>
       <% end %>
     </ul>
-    <%= link_to "Edit User", edit_user_path(@user) %> <br>
-    <%= link_to "See all categories", categories_path %>
-
-  </body>
-</html>
+  </div>
+</div>

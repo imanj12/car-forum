@@ -1,29 +1,51 @@
-<p><%= link_to @discussion.category.title, category_path(@discussion.category) %> > <%= @discussion.title %></p>
+<div class='main ui container'>
+  <div class="ui raised segment">
+    <div class="ui right rail">
+      <div class='ui segments' id='thread-right-rail'>
+        <div class="ui segment">
+          Posts: <%= @discussion.posts.count %>
+        </div>
+        <div class="ui segment">
+          Users in this thread: <%= @discussion.users.uniq.count %>
+        </div>
+        <div class="ui segment">
+          Average seconds between posts: <%= @discussion.avg_tm_btwn_posts %>
+        </div>
+        <div class="ui segment">
+          Average length of posts: <%= @discussion.avg_post_length %>
+        </div>
+        <div class='ui segment'>
+          Page views: <%= @discussion.hits %>
+        </div>
+      </div>
+    </div>
+    <h1><%= link_to 'All', categories_path %> > <%= link_to @discussion.category.title, category_path(@discussion.category) %> > <%= @discussion.title %></h1>
+  </div>
 
-<p>Total number of posts in thread: <%= @discussion.posts.count %></p>
-<p><%= pluralize(@discussion.users.uniq.count, 'person') %> have posted in this thread</p>
-<p>Average seconds between posts: <%= @discussion.avg_tm_btwn_posts %></p>
-<p>Average length of posts: <%= @discussion.avg_post_length %> characters</p>
-
-<ul>
+  <% post_count = 0 %>
   <% @discussion.posts.each do |pst| %>
-
-    <li><%= pst.content %></li>
-    <li><%= link_to pst.user.username, user_path(pst.user) %></li>
-    <li><%= pst.content.reading_time %></li><br>
-
-    <% if cookies[:user_id].to_i == pst.user_id %>
-      <li><%= link_to "Delete Post", pst, method: :delete %></li>
-    <% end %>
+    <% post_count += 1 %>
+    <div class='ui raised segments'>
+      <div class='ui segment'>
+        <%= '# ' + post_count.to_s %><br>
+        <%= pst.content.reading_time :format => :long %>
+      </div>
+      <div class='ui segment'>
+        <p><%= pst.content %></p>
+      </div>
+      <div class='ui secondary segment'>
+        <div class='post_author'>By: <%= link_to pst.user.username, user_path(pst.user) %>
+          <% if cookies[:user_id].to_i == pst.user_id %>
+            <%= link_to "(delete post)", pst, method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+
 
 <% if cookies[:user_id] %>
   <%= render partial: "layouts/new_post", locals: { post: Post.new, disc_id: @discussion.id, user_id: cookies[:user_id] } %>
 <% end %>
 
-<%= link_to 'See all Discussions in this Category', category_path(@discussion.category) %><br>
-
-<%= link_to 'See all Categories', categories_path %><br>
-
-<p>Number of page views: <%= @discussion.hits %></p>
+</div>

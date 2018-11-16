@@ -1,7 +1,10 @@
 <% if new_object.errors %>
-    <ul>
-    <% new_object.errors.full_messages.each do |error| %>
-        <li class="error"><%= error %></li>
-    <% end %>
-</ul>
+  <% new_object.errors.full_messages.each do |error| %>
+    <div class="ui error form segment">
+      <div class="ui error message">
+        <div class="header">Error Message(s)</div>
+        <p><%= error %></p>
+      </div>
+    </div>
+  <% end %>
 <% end %>
