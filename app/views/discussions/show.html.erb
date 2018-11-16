@@ -34,7 +34,7 @@
         <p><%= pst.content %></p>
       </div>
       <div class='ui secondary segment'>
-        <div class='post_author'>By: <%= link_to pst.user.username, user_path(pst.user) %>
+        <div class='post_author'>By: <img class="ui avatar image" src=<%= pst.user.profile_image_url %>> <%= link_to pst.user.username, user_path(pst.user) %>
           <% if cookies[:user_id].to_i == pst.user_id %>
             <%= link_to "(delete post)", pst, method: :delete %>
           <% end %>
